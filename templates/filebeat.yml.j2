@@ -1,7 +1,7 @@
 {{ ansible_managed | comment }}
 
 filebeat.inputs:
-{% if hostvars[inventory_hostname].type == 'c2' %}
+{% if redelk_client_type == 'c2' %}
 - type: log
   scan_frequency: 5s
   enabled: true
@@ -143,7 +143,7 @@ filebeat.inputs:
         type: screenshots
 {% endif %}
 
-{% if hostvars[inventory_hostname].type == 'redirector' %}
+{% if redelk_client_type == 'redirector' %}
 {% raw %}
 - type: log
   enabled: true
@@ -201,7 +201,7 @@ filebeat.modules:
   log:
     enabled: true
 
-{% if hostvars[inventory_hostname].type == 'redirector' %}
+{% if redelk_client_type == 'redirector' %}
 {% raw %}
 - module: haproxy
   log:

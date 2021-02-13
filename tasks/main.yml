@@ -101,4 +101,4 @@
 - import_tasks: c2.yml
   tags:
     - c2
-  when: hostvars[inventory_hostname].type == 'c2'
+  when: redelk_client_type == 'c2'
